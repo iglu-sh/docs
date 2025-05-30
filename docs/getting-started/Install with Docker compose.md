@@ -12,7 +12,7 @@ services:
     image: ghcr.io/iglu-sh/iglu-controller-docker:latest
     environment:
       DATABASE_URL: postgresql://iglu:<POSTGRES_DB_PASSWORD>@postgres:5432/cache
-      NEXT_PUBLIC_URL: <EXTERNAL_CONTROLLER_URL>:<EXPOSED_CONTROLLER_PORT>
+      NEXT_PUBLIC_URL: <EXTERNAL_CONTROLLER_URL>
       NEXT_PUBLIC_CACHE_URL: <EXTERNAL_CACHE_URL>:<EXPOSED_CACHE_PORT>
     ports:
       - <EXPOSED_CONTROLLER_PORT>:3000
