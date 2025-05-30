@@ -1,9 +1,7 @@
 name: Test deployment
 
 on:
-  push:
-    branches:
-      - main
+  pull_request:
 
 jobs:
   test-deploy:
