@@ -22,7 +22,7 @@ services:
   cache:
     image: ghcr.io/iglu-sh/iglu-cache-docker:latest
     environment:
-      CACHE_ROOT_DOMAIN: <EXTERNAL_CACHE_URL>:<EXPOSED_CACHE_PORT>
+      CACHE_ROOT_DOMAIN: <EXTERNAL_CACHE_URL>
       CACHE_MAX_GB: <MAX_CACHE_SIZE> 
       LOG_LEVEL: INFO
       POSTGRES_USER: iglu
