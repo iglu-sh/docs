@@ -26,15 +26,18 @@ We want to provide these features:
 
 ## Comparison
 Here are some comparison to other caches:
+- ✅: supported
+- ❌: not supported
+- 📅: planned
 
 |Feature|[Iglu](https://github.com/iglu-sh/controller)|[cachix](https://www.cachix.org/)|[attic](https://github.com/zhaofengli/attic/)|[cache-server](https://github.com/mifka01/cache-server)|
 |-------|---------------------------------------------|---------------------------------|---------------------------------------------|-------------------------------------------------------|
-|open source            |✅|❌|✅|✅|
-|self hostable          |✅|❌|✅|✅|
-|multiple caches        |✅|✅|✅|✅|
-|builtin builder        |✅|❌|❌|❌|
-|cachix compatible      |✅|✅|❌|✅|
-|UI for configuration   |✅|✅|❌|❌|
-|free of charge         |✅|❌|✅|✅|
-|flexible storag backend|❌|❌|✅|✅|
+|open source             |✅|❌|✅|✅|
+|self hostable           |✅|❌|✅|✅|
+|multiple caches         |✅|✅|✅|✅|
+|builtin builder         |✅|❌|❌|❌|
+|cachix compatible       |✅|✅|❌|✅|
+|UI for configuration    |✅|✅|❌|❌|
+|free of charge          |✅|❌|✅|✅|
+|flexible storage backend|📅|❌|✅|✅|
 
