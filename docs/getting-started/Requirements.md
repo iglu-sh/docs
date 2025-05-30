@@ -14,7 +14,7 @@ sidebar_position: 1
 - **CPU**: 4 Cores, ARM64 or AMD64 Architecture
 
 ## OS
-Any linux distro that can run docker.
+Any operating system that can run docker, although we only test for NixOS on x86_64 and arm64
 
 ## Dependencies
 - [Installed Docker](https://docs.docker.com/engine/install/)
