@@ -1,47 +1,38 @@
 ---
 sidebar_position: 1
 ---
+# Introducing Iglu
 
-# Tutorial Intro
+## What is Iglu?
+**Iglu** is an easy to use cache for nix derivations. So that you don't have to build your derivations (packages, configurations, ...) multipletimes.
+You can use the official [cachix](https://hackage.haskell.org/package/cachix) client to push derivations to your own Iglu cache.
 
-Let's discover **Docusaurus in less than 5 minutes**.
+## Why Iglu?
+Iglu was build to improve the usability of nix caches for normal users and organisations. We tested much caches, like
 
-## Getting Started
+- [attic](https://github.com/zhaofengli/attic/)
+- [cachix](https://www.cachix.org/)
+- [cache-server](https://github.com/mifka01/cache-server)
 
-Get started by **creating a new site**.
+And everytime we get disapointed, either because of the pricing, the usability or bugs.
+So we ([SirBerg](https://github.com/SirBerg) and [Svenum](https://github.com/Svenum)) decided to build our own cache!
+We want to provide these features:
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+- A simple UI to manage all caches
+- A stable and userfriendly experience
+- A way to build and upload derivations easyliy and automated by a builtin [builder](https://github.com/iglu-sh/builder)
 
-### What you'll need
+## Comparison
+Here are some comparison to other caches:
 
-- [Node.js](https://nodejs.org/en/download/) version 18.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+|Feature|[Iglu](https://github.com/iglu-sh/controller)|[cachix](https://www.cachix.org/)|[attic](https://github.com/zhaofengli/attic/)|[cache-server](https://github.com/mifka01/cache-server)|
+|-------|---------------------------------------------|---------------------------------|---------------------------------------------|-------------------------------------------------------|
+|open source            |✅|❌|✅|✅|
+|self hostable          |✅|❌|✅|✅|
+|multiple caches        |✅|✅|✅|✅|
+|builtin builder        |✅|❌|❌|❌|
+|cachix compatible      |✅|✅|❌|✅|
+|UI for configuration   |✅|✅|❌|❌|
+|free of charge         |✅|❌|✅|✅|
+|flexible storag backend|❌|❌|✅|✅|
 
-## Generate a new site
-
-Generate a new Docusaurus site using the **classic template**.
-
-The classic template will automatically be added to your project after you run the command:
-
-```bash
-npm init docusaurus@latest iglu-docs classic
-```
-
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
-
-The command also installs all necessary dependencies you need to run Docusaurus.
-
-## Start your site
-
-Run the development server:
-
-```bash
-cd iglu-docs
-npm run start
-```
-
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
-
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
-
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
