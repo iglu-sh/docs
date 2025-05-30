@@ -22,6 +22,7 @@ We want to provide these features:
 - A simple UI to manage all caches
 - A stable and userfriendly experience
 - A way to build and upload derivations easyliy and automated by a builtin [builder](https://github.com/iglu-sh/builder)
+- An easy-to-use and easy-to-maintain codebase for either forking or colaboration
 
 ## Comparison
 Here are some comparison to other caches:
