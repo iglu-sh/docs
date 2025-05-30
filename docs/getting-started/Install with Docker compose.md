@@ -13,7 +13,7 @@ services:
     environment:
       DATABASE_URL: postgresql://iglu:<POSTGRES_DB_PASSWORD>@postgres:5432/cache
       NEXT_PUBLIC_URL: <EXTERNAL_CONTROLLER_URL>
-      NEXT_PUBLIC_CACHE_URL: <EXTERNAL_CACHE_URL>:<EXPOSED_CACHE_PORT>
+      NEXT_PUBLIC_CACHE_URL: <EXTERNAL_CACHE_URL>
     ports:
       - <EXPOSED_CONTROLLER_PORT>:3000
     depends_on:
