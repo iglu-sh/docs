@@ -58,7 +58,7 @@ Please Replace:
 |`<EXTERNAL_CACHE_URL>`|external url of the cache|`http://cache.example.com`|
 |`<EXPOSED_CONTROLLER_PORT>`|port on which the controller will listen | `3001`|
 |`<EXTERNAL_CONTROLLER_URL>`|external url of the controller|`http://controller.example.com`|
-|`<POSTGRES_DB_PASSWORD>`|password witch is used to authenticate against postgres|`secret_password`|
+|`<POSTGRES_DB_PASSWORD>`|password which is used to authenticate against postgres|`secret_password`|
 
 
 
