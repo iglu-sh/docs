@@ -15,7 +15,7 @@ Iglu was build to improve the usability of nix caches for normal users and organ
 - [cache-server](https://github.com/mifka01/cache-server)
 - [nix-serve](https://github.com/edolstra/nix-serve)
 
-And everytime we get disapointed, either because of the pricing, the usability or bugs.
+Sadly, all of these didn't fit our requirements for a stable, multi-tenant implemenation that could be used with the cachix client.
 So we ([SirBerg](https://github.com/SirBerg) and [Svenum](https://github.com/Svenum)) decided to build our own cache!
 We want to provide these features:
 
