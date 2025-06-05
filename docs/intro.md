@@ -39,4 +39,5 @@ Here are some comparison to other caches:
 |UI for configuration    |✅|✅|❌|❌|
 |free of charge          |✅|❌|✅|✅|
 |flexible storage backend|📅|❌|✅|✅|
+|kubernetes support      |📅|❌|❌|❌|
 

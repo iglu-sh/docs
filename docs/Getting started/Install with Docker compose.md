@@ -6,10 +6,11 @@ We recommend the installation via docker compose, as it is the simplest one.
 
 ## Compose file
 
-```yml
+```yaml title="compose.yml"
+---
 services:
   controller:
-    image: ghcr.io/iglu-sh/iglu-controller-docker:latest
+    image: ghcr.io/iglu-sh/iglu-controller:latest
     environment:
       DATABASE_URL: postgresql://iglu:<POSTGRES_DB_PASSWORD>@postgres:5432/cache
       NEXT_PUBLIC_URL: <EXTERNAL_CONTROLLER_URL>
@@ -20,7 +21,7 @@ services:
       - postgres
       - cache
   cache:
-    image: ghcr.io/iglu-sh/iglu-cache-docker:latest
+    image: ghcr.io/iglu-sh/iglu-cache:latest
     environment:
       CACHE_ROOT_DOMAIN: <EXTERNAL_CACHE_URL>
       CACHE_MAX_GB: <MAX_CACHE_SIZE> 

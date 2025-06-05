@@ -1,0 +1,116 @@
+openapi: 3.0.4
+info:
+  title: Iglu Builder API
+  description: |-
+    This is the documentation of the Iglu Builder API. This Builder is part of the [Iglu Project](https://github.com/iglu-sh).
+  version: 0.0.1
+externalDocs:
+  description: Find out more about Iglu
+  url: https://docs.iglu.sh/
+servers:
+  - url: https://example.com/api/v1
+paths:
+  /build:
+    get:
+      summary: Start build websocket
+      description: |-
+        Create a websocket to start a build job. 
+        More information about the Websocket you can find [here](/docs/Components/Iglu%20Builder#Websocket)
+      operationId: build
+      responses:
+        '101':
+          description: Switching Protocols – WebSocket wird aufgebaut.                                   
+          x-websocket:                                   
+            message:                                   
+              send:                                   
+                description: JSON zum Starten eines Build-Jobs.
+                content:
+                  application/json:
+                    $ref: "#/components/schemas/buildJob"
+              receive:                                   
+                description: Server-Antworten wie Status, Logs oder Fehler.
+  /healthcheck:
+    get:
+      summary: healthcheck
+      description: Endpoint to check the service health of the Builder
+      operationId: healthcheck
+      responses:
+        "200":
+          description: Everything is running
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: Everyting seems healthy!
+
+        "405":
+          description: Methode nicht erlaubt
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: Method Not Allowed
+                
+components:
+  schemas:
+    buildJob:
+      type: object
+      properties:
+        git:
+          type: object
+          properties:
+            repository:
+              type: string
+            branch:
+              type: string
+            gitUsername:
+              type: string
+            gitKey:
+              type: string
+            requiresAuth:
+              type: boolean
+            noClone:
+              type: boolean
+          required:
+            - noClone
+        buildOptions:
+          type: object
+          properties:
+            cores:
+              type: number
+            maxJobs:
+              type: number
+            keep_going:
+              type: boolean
+            extraArgs:
+              type: string
+            substituters:
+              type: array
+              items:
+                type: string
+            trustedPublicKeys:
+              type: array
+              items:
+                type: string
+            command:
+              type: string
+            cachix:
+              type: object
+              properties:
+                push:
+                  type: boolean
+                target:
+                  type: string
+                apiKey:
+                  type: string
+                signingKey:
+                  type: string
+              required:
+                - push
+          required:
+            - command
+            - cachix
+      required:
+        - git
+        - buildOptions
+
