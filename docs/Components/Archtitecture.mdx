@@ -1,0 +1,16 @@
+---
+sidebar_position: 4
+---
+
+import { useColorMode } from '@docusaurus/theme-common';
+
+export const Image = () => {
+  const { colorMode } = useColorMode(); // 'light' oder 'dark'
+
+  const imagePath = "/img/docs/Components/Archtecture/communication_" + colorMode + ".excalidraw.svg"
+
+  return <img src={imagePath}/>
+
+}
+
+<Image/>
