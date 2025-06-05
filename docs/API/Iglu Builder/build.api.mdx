@@ -1,0 +1,65 @@
+---
+id: build
+title: "Start build websocket"
+description: "Create a websocket to start a build job."
+sidebar_label: "Start build websocket"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNVdtu4zYQ/RViigK7gGIlffRbGrRFsm03QHbRB69RUNJEYlbicGeGsV3DwP5D/7BfsiB9iesoCPrWJwnkzOE5M8PDNTQoNbugjjxM4YrRKhprFlgJ1Z9RjZIRtazGmiq6vjEPVE3MJ/8bMRrn74kHm7KNrSiq0Q7NH4fkFUVTW2/unW/MrEPG+ZuyoVrKKxoCefQq5XXbx+9/OP8xoSN/d8h+CwVQQM7w1w1MIROAAhglkBcUmK7h4vwiff4t5G7htO6cb80tk1JNvZh/vv6dqN1tqS0cN8bG+xYrG3UCBSzPDqoT4IAitsX0K+ib52fc3L3/3fwVB3OX6oPeoPMoJus4u6FKEmhNXtFnQBtC7+qspnyQBLEGXQWEKVD1gLVCAYGTYnVbaa3T14MYA4lT4tVRrCg738KmgIqtr7vRrdbpR0H2dsCX9t/hOCrjl+gY5TLqMXZF1KP1KcLTVU8exzaf8huYzg6R88Q2Fe99rrC8Lr0mxuMwH4cKOZ0+2GXqwOjeZ8TwZ0tJyShzXCrbS25lVLnEStRpVOTjAMtsV1CAUxzGEjcFKEdRbG5j1bv6Ha7+Y3pNw2C3c/iMVG3rzi1fL1iI8kK71HKLOgpug3tpDMS13vl2fPukzfns+enqXtVBw7OIdAlOBmNegDrtcW8JN1TBZptXo3vEET9AfkQ+u/S6oHxXFw7TvdUohfmVWjHUIJufseuRJwkswQ2oHSXjSaUpINg07FDubUgyqMB0tobIPUyhUw0yLUtc2iH0OKlpKG1w5eMFbOYFJLvMhdqRT85ndr5nLm+voTih/aFzYpxkV22ojgN63bot3efFU4SJySn7FScmJO/eRc9y+C1TGo75mz3b1mkXq0zWtX08k+5tsq6kbUvjfHI+uUj9DiQ62OxcW9eA7H27l+HJPk90rJ9s8P/3xOymVnGpZeity9cht3O96/hs9/DMC+hINC2s15UV/Mj9ZpOWv0RM9jubF/Bo2dkqtXc2Px6hX376AJvNN+8Gl2I=
+sidebar_class_name: "get api-method"
+info_path: docs/API/Iglu Builder/iglu-builder-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Start build websocket"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/build"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Create a websocket to start a build job. 
+More information about the Websocket you can find [here](/docs/Components/Iglu%20Builder#Websocket)
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"101":{"description":"Switching Protocols – WebSocket wird aufgebaut.","x-websocket":{"message":{"send":{"description":"JSON zum Starten eines Build-Jobs.","content":{"application/json":{"type":"object","properties":{"git":{"type":"object","properties":{"repository":{"type":"string"},"branch":{"type":"string"},"gitUsername":{"type":"string"},"gitKey":{"type":"string"},"requiresAuth":{"type":"boolean"},"noClone":{"type":"boolean"}},"required":["noClone"]},"buildOptions":{"type":"object","properties":{"cores":{"type":"number"},"maxJobs":{"type":"number"},"keep_going":{"type":"boolean"},"extraArgs":{"type":"string"},"substituters":{"type":"array","items":{"type":"string"}},"trustedPublicKeys":{"type":"array","items":{"type":"string"}},"command":{"type":"string"},"cachix":{"type":"object","properties":{"push":{"type":"boolean"},"target":{"type":"string"},"apiKey":{"type":"string"},"signingKey":{"type":"string"}},"required":["push"]}},"required":["command","cachix"]}},"required":["git","buildOptions"],"title":"buildJob"}}},"receive":{"description":"Server-Antworten wie Status, Logs oder Fehler."}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

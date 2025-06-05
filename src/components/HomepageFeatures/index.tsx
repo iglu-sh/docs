@@ -10,30 +10,29 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to use',
-    description: (
-      <>
-        Iglu is thank to is user friendly frontend (GUI) easy to use!
-        You can control the hole product with a User friendly frontend.
-      </>
-    ),
+    title: "All-in-One Build System",
+    description: "Iglu combines a builder, cache, and a UI-based controller into a single, cohesive system - no external orchestration required."
   },
   {
-    title: 'Fast deployment',
-    description: (
-      <>
-        You can deploy Iglu with in seconds by just one simple <code>docker compose up</code>!
-      </>
-    ),
+    title: "Dynamic, Containerized Builders",
+    description: "Build jobs are automatically executed in isolated Docker containers. The controller dynamically creates and tears down these containers per job - ensuring clean, efficient, and reproducible builds."
   },
   {
-    title: 'Cachix compatibility',
-    description: (
-      <>
-        The Iglu Cache is compatible with the official cachix client. So you don't have to learn a new client for the new cache.
-      </>
-    ),
+    title: "Cachix Compatible & Flexible",
+    description: "Iglu is compatible with the Cachix client, allowing seamless integration with existing caching workflows - wi-thout vendor lock-in."
   },
+  {
+    title: "UI for Job and Cache Management",
+    description: "The built-in user interface allows teams to monitor build jobs, inspect caches, and manage build processes with clarity and ease."
+  },
+  {
+    title: "Automatic Caching of Nix Derivations",
+    description: "Completed builds are automatically pushed to the cache, with proper hash-based detection. Redundant builds are avoided - ensuring fast and deterministic pipelines."
+  },
+  {
+    title: "CI/CD Ready & Self-Hostable",
+    description: "Iglu is designed for automated pipelines and can be fully self-hosted-ideal for privacy-focused or security-sensitive environments."
+  }
 ];
 
 function Feature({title, description}: FeatureItem) {
