@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-We recommend the installation via docker compose, as it is the simplest way.
+We recommend the installation via docker compose, as it is the simplest one.
 
 ## Compose file
 
