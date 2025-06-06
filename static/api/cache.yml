@@ -10,12 +10,7 @@ servers:
 paths:
   /api/v1/cache/{cache}:
     parameters:
-    - in: path
-      name: cache
-      schema:
-        type: string
-      required: true
-      description: Name of the Cache
+      - $ref: "#/components/parameters/cache"
     get:
       summary: /api/v1/cache/{cache}
       description: |-
@@ -69,12 +64,7 @@ paths:
           $ref: "#/components/responses/internalServerError"
   /{cache}/nix-cache-info:
     parameters:
-    - in: path
-      name: cache
-      schema:
-        type: string
-      required: true
-      description: Name of the Cache
+      - $ref: "#/components/parameters/cache"
     post:
       summary: /{cache}/nix-cache-info
       description: |-
@@ -128,4 +118,11 @@ components:
           schema:
             type: string
             example: Cache Not Found
-
+  parameters:
+    "cache":
+      in: path
+      name: cache
+      schema:
+        type: string
+      required: true
+      description: Name of the Cache
