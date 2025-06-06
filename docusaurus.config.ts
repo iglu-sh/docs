@@ -86,6 +86,15 @@ const config: Config = {
             },
             hideSendButton: true,
           } satisfies OpenApiPlugin.Options,
+          cache: {
+            specPath: "static/api/cache.yml",
+            outputDir: "docs/API/Iglu Cache",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+              categoryLinkSource: "tag",
+            },
+            hideSendButton: true,
+          } satisfies OpenApiPlugin.Options,
         }
       },
     ]
