@@ -1,0 +1,72 @@
+---
+id: get-information-of-cache
+title: "Get information of {cache}"
+description: "Get information about {cache}"
+sidebar_label: "Get information of {cache}"
+hide_title: true
+hide_table_of_contents: true
+api: eJylVV1v0zAU/SvWfQIpNB10QkTiYZoKTMA07eOFqg9Octt4JLZ3bZeGKP8d2U4hXbuBRF/qOPfjnPjc4w5KNAUJbYWSkMFHtEzIlaKG+x3Gc+Us6wpeVNhDAoRGK2nQQNbB6+nU/+1XuDjIthWyUAASKJS0KK1P41rXogiB6b3xuR2YosKG+5VtNUIGKr/HwkICmpRGsiJ2XgtbufzOIEne4CjeWBJyDQnglje69lvOIEGfgDBXLq9FMYrOlaqRy3H4itcG+wT+XrfEFXe19aU1UiOMEZHE0ynXyMsQT7hCIizPVaMJQ+ZXtJUqn8//aWzMD0RuxFoKuf6MrRmlcSLeQgLCYmP+iUF2+XaqPs1de3J/8/Pi2+l2/q18ON/M0tm7z/NrLB7Sqzemxpsv2/uL99D3CTgSz1eurNVZmg4bk0I1kbZQJGw7ypWuyZHGubNpH34JzI7J61KxyJ6ZSJ99x3ZfWBa3NtU1F8cldQTubYWETBgmj1VnK0XMVsJEFSeMlyVTElneMmd8kN8XW7ZGicQtvvqOreaCfs/Njs/skM+5j2CXyrIPysnyf5k8LrfrfHrYOQqOSWUZr2v1A/+7+VDRdz8bKsb+p8eNwvrxrdkN0gaJzYkU7UMI3VMP5F8hHC86CEpz4g1aJAPZogNPDDS3FezGHXY29VSr3jvggxOEJWSWHCaP5ckbZGoVPC+cBfTLBJphtmGNwct8zwzS0C39Y64mYI7gHNXDHJn9QUq5FunmJNT1Th1AChvZr2sX27Kzqwt4DO7Wa1iYAK5UhWtQ2mjUA+L9/AkLCfFZGKY52V3kIoRekfL2vHyxwxl9OcAU69q9MtXLCSTgWUUI08l0chK8QBnb8CCt4ds/vnrUanTv7BHp/mjkrxfWcH4jMQf/qoO8wjksfp96FhfLBCplrH/TdTk3eEd13/vtB4fUQrZYJrDhJHjuv/qig1IYvy6H6+MZuC+uB/m8ZIdSeQLtztil97kNr51/ggS88e0k2y/7BCrkJVJAFN+dFQVqO8o6uHP31Plxfgt9/wtrxsSv
+sidebar_class_name: "get api-method"
+info_path: docs/API/Iglu Cache/iglu-cache-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get information of \\{cache\\}"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/cache/{cache}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Get information about \{cache\}
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"in":"path","name":"cache","schema":{"type":"string"},"required":true,"description":"Name of the Cache"}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Information about the cache","content":{"application/json":{"schema":{"type":"object","properties":{"githubUsername":{"type":"string","example":"user"},"isPublic":{"type":"boolean","example":false},"name":{"type":"string","example":"default"},"permission":{"type":"string","example":"Read"},"preferredCompressionMethod":{"type":"string","example":"zstd"},"publicSigningKeys":{"type":"array","items":{"type":"string","example":"default:N70oHEuy1jSzIZ5xEZdqCv4/49KERecq/P3sleSLxjI="}},"uri":{"type":"string","example":"http://example.com"},"priority":{"type":"number","example":40}}}}}},"400":{"description":"No public signing key","content":{"text/plain":{"schema":{"type":"string","example":"There is no public signing key for this cache, add one by using cachix generate-keypair {cache}"}}}},"404":{"description":"Cache Not Found","content":{"text/plain":{"schema":{"type":"string","example":"Cache Not Found"}}}},"405":{"description":"Method not allowed","content":{"text/plain":{"schema":{"type":"string","example":"Method Not Allowed"}}}},"500":{"description":"Internal Server Error","content":{"plain/text":{"schema":{"type":"string","example":"Internal Server Error"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      
