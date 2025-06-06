@@ -49,21 +49,6 @@ const config: Config = {
             'https://github.com/iglu-sh/docs/tree/main/',
           docItemComponent: "@theme/ApiItem",
         },
-        blog: {
-          showReadingTime: true,
-          feedOptions: {
-            type: ['rss', 'atom'],
-            xslt: true,
-          },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/iglu-sh/docs/tree/main/',
-          // Useful options to enforce blogging best practices
-          onInlineTags: 'warn',
-          onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
-        },
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -79,7 +64,7 @@ const config: Config = {
         config: {
           builder: {
             specPath: "static/api/builder.yml",
-            outputDir: "docs/API/Iglu Builder",
+            outputDir: "docs/Developer/API/Iglu Builder",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -88,7 +73,7 @@ const config: Config = {
           } satisfies OpenApiPlugin.Options,
           cache: {
             specPath: "static/api/cache.yml",
-            outputDir: "docs/API/Iglu Cache",
+            outputDir: "docs/Developer/API/Iglu Cache",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -99,7 +84,16 @@ const config: Config = {
       },
     ]
   ],
-  themes: ["docusaurus-theme-openapi-docs"],
+  themes: [
+    "docusaurus-theme-openapi-docs",
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
+      ({
+        hashed: true,
+      }),
+    ],
+  ],
   themeConfig: {
     // Replace with your project's social card
     image: 'img/logo.jpeg',

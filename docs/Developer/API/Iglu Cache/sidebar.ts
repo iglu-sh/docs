@@ -4,7 +4,7 @@ const sidebar: SidebarsConfig = {
   apisidebar: [
     {
       type: "doc",
-      id: "API/Iglu Cache/iglu-cache-api",
+      id: "Developer/API/Iglu Cache/iglu-cache-api",
     },
     {
       type: "category",
@@ -12,9 +12,15 @@ const sidebar: SidebarsConfig = {
       items: [
         {
           type: "doc",
-          id: "API/Iglu Cache/get-information-of-cache",
-          label: "Get information of {cache}",
+          id: "Developer/API/Iglu Cache/api-v-1-cache-cache",
+          label: "/api/v1/cache/{cache}",
           className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "Developer/API/Iglu Cache/cache-nix-cache-info",
+          label: "/{cache}/nix-cache-info",
+          className: "api-method post",
         },
       ],
     },

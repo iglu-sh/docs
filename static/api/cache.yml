@@ -6,9 +6,9 @@ info:
   version: 0.0.1
 
 servers:
-  - url: https://example.com/api/v1
+  - url: https://exampoe.com
 paths:
-  /cache/{cache}:
+  /api/v1/cache/{cache}:
     parameters:
     - in: path
       name: cache
@@ -17,24 +17,12 @@ paths:
       required: true
       description: Name of the Cache
     get:
-      summary: Get information of {cache} 
+      summary: /api/v1/cache/{cache}
       description: |-
-        Get information about {cache}
+        Get settings of a {cache}
       responses:
-        "405":
-          description: Method not allowed
-          content:
-            text/plain:
-              schema:
-                type: string
-                example: Method Not Allowed
         "404":
-          description: Cache Not Found
-          content:
-            text/plain:
-              schema:
-                type: string
-                example: Cache Not Found
+          $ref: "#/components/responses/cacheNotFound"
         "400":
           description: No public signing key
           content:
@@ -43,7 +31,7 @@ paths:
                 type: string
                 example: There is no public signing key for this cache, add one by using cachix generate-keypair {cache}
         "200":
-          description: Information about the cache
+          description: Settings of the cache
           content:
             application/json:
               schema:
@@ -75,11 +63,69 @@ paths:
                   priority:
                     type: number
                     example: 40
+        "405":
+          $ref: "#/components/responses/methodNotFound"
         "500":
-          description: Internal Server Error
+          $ref: "#/components/responses/internalServerError"
+  /{cache}/nix-cache-info:
+    parameters:
+    - in: path
+      name: cache
+      schema:
+        type: string
+      required: true
+      description: Name of the Cache
+    post:
+      summary: /{cache}/nix-cache-info
+      description: |-
+        Get cache information
+      responses:
+        "200":
+          description: Information of the cache
           content:
-            plain/text:
+            text/plain:
               schema:
                 type: string
-                example: Internal Server Error
-          
+                example: |
+                  StoreDir: /nix/store
+                  WantMassQuery: 1
+                  Priority: 40
+        "404":
+          $ref: "#/components/responses/cacheNotFound"
+        "403":
+          description: Cache Not Public
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: Cache Not Public
+        "405":
+          $ref: "#/components/responses/methodNotFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+
+
+components:
+  responses:
+    "methodNotFound":
+      description: Method Not Allowed
+      content:
+        text/plain:
+          schema:
+            type: string
+            example: Method Not Allowed
+    "internalServerError": 
+      description: Internal Server Error
+      content:
+        text/plain:
+          schema:
+            type: string
+            example: Internal Server Error
+    "cacheNotFound":
+      description: Cache Not Found
+      content:
+        text/plain:
+          schema:
+            type: string
+            example: Cache Not Found
+
