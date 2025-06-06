@@ -8,7 +8,7 @@ sidebar_position: 1
 The **Iglu Builder** is the component of the Iglu Project that can build [nix derivations](https://nix.dev/manual/nix/2.25/language/derivations) and push it to [cachix](https://www.cachix.org/) compatible nix caches like our [Iglu Cache](/docs/Components/Iglu%20Cache).
 
 ## Websocket
-This is the documentation to the [`/api/v1/build` Websocket](/docs/API/Iglu%20Builder/build)
+This is the documentation to the [`/api/v1/build` Websocket](/docs/Developer/API/Iglu%20Builder/build)
 
 :::info
 This Endpoint accepts only **one** connection simultaneously!

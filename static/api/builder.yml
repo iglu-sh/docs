@@ -12,7 +12,7 @@ servers:
 paths:
   /build:
     get:
-      summary: Start build websocket
+      summary:  /api/v1/build
       description: |-
         Create a websocket to start a build job. 
         More information about the Websocket you can find [here](/docs/Components/Iglu%20Builder#Websocket)
@@ -31,7 +31,7 @@ paths:
                 description: Server-Antworten wie Status, Logs oder Fehler.
   /healthcheck:
     get:
-      summary: healthcheck
+      summary: /api/v1/healthcheck
       description: Endpoint to check the service health of the Builder
       operationId: healthcheck
       responses:
