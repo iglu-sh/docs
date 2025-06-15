@@ -112,9 +112,10 @@ Every response has this schema:
             "type": "string",
             "enum": ["failed", "success", "starting", "running"]
         },
-        "childExitCode": { "type": "number" }
+        "childExitCode": { "type": "number" },
+        "timestamp": { "type": "number" }
     }
-    "required": [ "jobStatus" ],
+    "required": [ "jobStatus", "timestamp" ],
     "additionalProperties": false
 }
 ```
@@ -125,7 +126,8 @@ Every response has this schema:
 ```json
 {
     "error": "A build job is already running.",
-    "jobStatus": "running"
+    "jobStatus": "running",
+    "timestamp": TIMESTAMP
 }
 ```
 </details>
@@ -135,7 +137,8 @@ Every response has this schema:
 ```json
 {
     "msg": "Start Building",
-    "jobStatus": "starting"
+    "jobStatus": "starting",
+    "timestamp": TIMESTAMP
 }
 ```
 </details>
@@ -145,7 +148,8 @@ Every response has this schema:
 ```json
 {
     "stdout": "SOME_OUTPUT",
-    "jobStatus": "running"
+    "jobStatus": "running",
+    "timestamp": TIMESTAMP
 }
 ```
 </details>
@@ -156,7 +160,8 @@ Every response has this schema:
 {
     "error": "Invalid command: 'YOUR_COMMAND'",
     "buildExitCode": 2,
-    "jobStatus": "failed"
+    "jobStatus": "failed",
+    "timestamp": TIMESTAMP
 }
 ```
 </details>
@@ -167,7 +172,8 @@ Every response has this schema:
 {
     "error": "Something went wrong while building. Builder exited with error code CHILD_EXIT_CODE",
     "buildExitCode": CHILD_EXIT_CODE,
-    "jobStatus": "failed"
+    "jobStatus": "failed",
+    "timestamp": TIMESTAMP
 }
 ```
 </details>
@@ -178,7 +184,8 @@ Every response has this schema:
 {
     "msg": "Build was successfull",
     "buildExitCode": 0,
-    "jobStatus": "success"
+    "jobStatus": "success",
+    "timestamp": TIMESTAMP
 }
 ```
 </details>
@@ -188,7 +195,8 @@ Every response has this schema:
 ```json
 {
     "error": "JSON schema is not valid.",
-    "jobStatus": "failed"
+    "jobStatus": "failed",
+    "timestamp": TIMESTAMP
 }
 ```
 </details>
@@ -198,7 +206,8 @@ Every response has this schema:
 ```json
 {
     "error": "Not a valid JSON",
-    "jobStatus": "failed"
+    "jobStatus": "failed",
+    "timestamp": TIMESTAMP
 }
 ```
 </details>
