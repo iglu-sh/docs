@@ -86,6 +86,15 @@ const config: Config = {
             },
             hideSendButton: true,
           } satisfies OpenApiPlugin.Options,
+          controller: {
+            specPath: "static/api/controller.yml",
+            outputDir: "docs/API/Iglu Controller",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+              categoryLinkSource: "tag",
+            },
+            hideSendButton: true,
+          } satisfies OpenApiPlugin.Options,
         }
       },
     ]

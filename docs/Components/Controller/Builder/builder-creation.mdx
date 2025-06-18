@@ -1,0 +1,16 @@
+---
+id: builder-controller-relation
+title: "Builder Controller Relation"
+description: "This is how the Iglu Controller communicates with Builders."
+---
+
+## How are builders started?
+Builders (or rather the containers) are not started directly by the Iglu Controller, but rather a Scheduler Server. This Scheduler server runs in the background and starts the containers when a new build is requested / according to a cron schedule.
+The Scheduler Server is automatically setup when you spin up the Iglu Controller, so you don't have to worry about it.
+The Files for this Scheduler are located unter `lib/scheduler` in the Iglu Controller repository.
+## How does the Iglu Controller communicate with Builders / The Scheduler?
+All of these compontens communicate via this schema:
+![Iglu Controller Scheduler Communication](/img/docs/Controller/Builder/iglu-controller_scheduler_builder_relation.png)
+## How can I add a new Builder?
+Well first you can create one via the Iglu Controller UI in the "Builders" section.
+You can also create a new Builder via the Rest API of the Iglu Controller. This API is documented here: [Iglu Controller API](/docs/API/Iglu%20Controller/create-a-new-builder)

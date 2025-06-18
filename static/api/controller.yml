@@ -1,0 +1,459 @@
+openapi: 3.0.4
+info:
+  title: Iglu Controller API
+  description: |-
+    This is the documentation of the Iglu Controller API. The Controller is part of the [Iglu Project](https://github.com/iglu-sh).
+  version: 0.0.1
+externalDocs:
+  description: Read more on the official Iglu Docs
+  url: https://docs.iglu.sh/
+servers:
+  - url: https://example.com/api/v1
+paths:
+  /user:
+    get:
+      summary: returns user information for an API Token
+      description: |-
+        Get user information about a given API Token
+      security:
+        - api_key: []
+      responses:
+        '200':
+          description: "Returned if a user was found"
+          content:
+            "application/json":
+              schema:
+                $ref: '#/components/schemas/userData'
+        '401':
+          description: 'A 401 Header is returned if the Auth was incorrect, not provided or the bearer token was corrupted'
+          content:
+            "application/json":
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+        '500':
+          description: "A 500 Error is returned when the Server encounters any issue."
+          content:
+            "application/json":
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+  /builder:
+    get:
+      summary: Get Info about all Builders for a Cache
+      description: |-
+        Returns all Builders for a given CacheID
+      parameters:
+        - name: cacheID
+          in: query
+          required: true
+          description: 'The Cache ID that you want to query.'
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: 'A 200 Is returned if the Auth was correct and a  builder with the given ID was found'
+          content:
+            "application/json":
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/dbBuilder'
+        '400':
+          description: 'A 400 Error is returned if the given cacheID is invalid or not found'
+          content:
+            "application/json":
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+        '403':
+          description: 'A 403 Error is returned if the request was not properly authenticated'
+          content:
+            "application/json":
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+        '500':
+          description: 'A 500 Error is returned in case the Server encounters a generic Error in the fetching of the builders'
+          content:
+            "application/json":
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+    post:
+      summary: 'Create a new Builder'
+      description: |-
+        Create a new Builder using the REST API.
+      parameters:
+        - name: cacheID
+          in: query
+          required: true
+          description: 'The Cache ID that you want to create the builder in.'
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Create a new Builder
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/builderCreationRequest'
+      responses:
+        '200':
+          description: 'Returned if the request was successfull'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/builderCreationRequest'
+        '401':
+          description: 'Returned if the request was invalid, i.e no body or the cacheID is invalid or not found'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '403':
+          description: 'Returned if the request was made aunauthenticated'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '400':
+          description: 'Returned if the request body was malformed or is deemed invalid according to the schema'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '500':
+          description: 'Returned if the Server encounters any errors during the creation process'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+
+
+
+
+
+security:
+  - api_key: []
+
+components:
+  securitySchemes:
+    api_key:
+      type: http
+      scheme: bearer
+      bearerFormat: string
+      description: 'An API Key in the format bearer <your-token>'
+  schemas:
+    error:
+      type: object
+      properties:
+        error:
+          type: string
+
+    hash:
+      type: object
+      properties:
+        id:
+          type: number
+        path:
+          type: string
+        cache:
+          type: number
+        updatedat:
+          type: string
+        cderiver:
+          type: string
+        cfilehash:
+          type: string
+        cfilesize:
+          type: string
+        creferences:
+          type: string
+        csig:
+          type: string
+        cstorehash:
+          type: string
+        cstoresuffix:
+          type: string
+        parts:
+          type: string
+        compression:
+          type: string
+
+    cache:
+      type: object
+      properties:
+        id:
+          type: number
+        githubusername:
+          type: string
+        ispublic:
+          type: boolean
+        name:
+          type: string
+        permission:
+          type: string
+        preferredcompressionmethod:
+          type: string
+        uri:
+          type: string
+        priority:
+          type: number
+        problems:
+          type: array
+          items:
+            type: object
+            properties:
+              heading:
+                type: string
+              description:
+                type: string
+
+    builder:
+      type: object
+      properties:
+        id:
+          type: number
+        name:
+          type: string
+        description:
+          type: string
+        enabled:
+          type: boolean
+        trigger:
+          type: string
+        cron:
+          type: string
+        webhookurl:
+          type: string
+      required: ['id', 'name', 'description', 'enabled', 'trigger', 'webhookurl']
+    git:
+      type: object
+      properties:
+        repository:
+          type: string
+        branch:
+          type: string
+        gitusername:
+          type: string
+        gitkey:
+          type: string
+        requiresauth:
+          type: boolean
+        noclone:
+          type: boolean
+
+    buildoptions:
+      type: object
+      properties:
+        cores:
+          type: number
+        maxjobs:
+          type: number
+        keep_going:
+          type: boolean
+        extraargs:
+          type: string
+        substituters:
+          type: array
+          items:
+            $ref : '#/components/schemas/substituter'
+        parallelbuilds:
+          type: boolean
+          description: 'Defines wether or not to start new builds while an old build is already running'
+        command:
+          type: string
+
+    cachix:
+      type: object
+      properties:
+        push:
+          type: boolean
+        target:
+          type: string
+        apikey:
+          $ref : '#/components/schemas/apikey'
+        signingkey:
+          $ref: "#/components/schemas/signingkey"
+        builder_id:
+          type: string
+        buildoutputdir:
+          type: string
+        id:
+          type: number
+
+    builderRun:
+      type: object
+      properties:
+        log:
+          type: string
+
+    builderDatabase:
+      type:
+        object
+      properties:
+        builder:
+          $ref: '#/components/schemas/builder'
+        git:
+          $ref: '#/components/schemas/git'
+        buildoptions:
+          $ref: '#/components/schemas/buildoptions'
+        cachix:
+          $ref: '#/components/schemas/cachix'
+        cache:
+          $ref: '#/components/schemas/cache'
+    dbBuilder:
+      type:
+        object
+      properties:
+        builder:
+          $ref: '#/components/schemas/builder'
+        git:
+          $ref: '#/components/schemas/git'
+        buildoptions:
+          $ref: '#/components/schemas/buildoptions'
+        cachix:
+          $ref: '#/components/schemas/cachix'
+        cache:
+          $ref: '#/components/schemas/cache'
+        lastrun:
+          $ref: '#/components/schemas/builderRun'
+
+    signingkey:
+      type: object
+      properties:
+        id:
+          type: number
+        privateKey:
+          type: string
+        publicKey:
+          type: string
+
+    apikey:
+      type: object
+      properties:
+        key:
+          type: number
+        id:
+          type: number
+
+    substituter:
+      type: object
+      properties:
+        url:
+          type: string
+        signingKeys:
+          type: array
+          items:
+            type: string
+
+    userData:
+      type: object
+      properties:
+        caches:
+          type: array
+          items:
+            $ref: '#/components/schemas/cache'
+        newestCashedHashes:
+          type: array
+          items:
+            $ref: '#/components/schemas/hash'
+    builderCreationRequest:
+      type: object
+      required:
+        - name
+        - description
+        - git
+        - build
+        - cachix
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        git:
+          type: object
+          required:
+            - noClone
+            - url
+            - branch
+            - requiresAuth
+            - username
+            - token
+          properties:
+            noClone:
+              type: boolean
+            url:
+              type: string
+            branch:
+              type: string
+            requiresAuth:
+              type: boolean
+            username:
+              type: string
+            token:
+              type: string
+        build:
+          type: object
+          required:
+            - command
+            - buildTrigger
+            - outputDir
+            - allowUnfree
+            - parallelBuilds
+            - sandboxed
+            - maxJobs
+            - cores
+            - substituters
+          properties:
+            command:
+              type: string
+            buildTrigger:
+              type: string
+              enum: [manual, webhook, cron]
+            cron:
+              type: string
+              description: Required if buildTrigger is "cron"
+            outputDir:
+              type: string
+            allowUnfree:
+              type: boolean
+            parallelBuilds:
+              type: boolean
+            sandboxed:
+              type: boolean
+            maxJobs:
+              type: integer
+            cores:
+              type: integer
+            substituters:
+              type: array
+              items:
+                $ref: '#/components/schemas/substituter'
+        cachix:
+          type: object
+          required:
+            - mode
+            - push
+          properties:
+            mode:
+              type: string
+              enum: [manual, auto]
+            cachixPublicSigningKey:
+              type: string
+            cachixSigningKey:
+              type: string
+            push:
+              type: boolean
