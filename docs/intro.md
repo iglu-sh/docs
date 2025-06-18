@@ -38,6 +38,7 @@ Here are some comparison to other caches:
 |cachix compatible       |✅|✅|❌|✅|
 |UI for configuration    |✅|✅|❌|❌|
 |free of charge          |✅|❌|✅|✅|
+|Prometheus metrics      |✅|❌|❌|❌|
 |flexible storage backend|📅|❌|✅|✅|
 |kubernetes support      |📅|❌|❌|❌|
 
