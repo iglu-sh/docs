@@ -1,0 +1,72 @@
+---
+id: get-info-about-all-builders-for-a-cache
+title: "Get Info about all Builders for a Cache"
+description: "Returns all Builders for a given CacheID"
+sidebar_label: "Get Info about all Builders for a Cache"
+hide_title: true
+hide_table_of_contents: true
+api: eJy9V1Fv2zgM/iuCnzaga7rbdg/F4YBu3Q3BXoZu9xQUhWwztlpZ8igpbRDkvx8p24mTytdeD9hTU4siP1LkR3KTleAKVK1X1mTn2RX4gMYJqbX4GJQuAZ1YWhRSVGoFRnySRQ3zy+wkayXKBjwJZOeLTWboH1JQ7M4V6/sZANf0D8LPoBDK7NxjgJMjqz9q6BSL+aXwtfRibYO4l8YLb0XUcUpKHEk0MjvfZH7dsjFlPFSAdEQQG+m7T7+/z7bba7bpWmscOL7x29kZ/zm0eyHos5g7gdFtKIVakn0QF8HXZN+JwiJC4YU0JYVA5F1IxL2icxbsgkKoWXhpgykJTGEJl/FsT7atVoVke7Nbx0Y3j92QiJKDpDw0bvTd5rdkm0ONtgX0qnOlB/G0oCpHMiY0OV3anvQvtTtwHpWp+OAgOIlzMDLXMFaaW6tBGj4kqao6QLW/WOCExnvIa2vvAurE8XacNgv2psd+iHSPaw/iQDOlgldeR7x96Eh1pfzTEURorVPeUg6n4OcoTVEnj0h9cICTsabzO0hr7Z12kpIwHWtjC20NpA63e2fZQwbJPtsYq2ckFyU8uGTaNPLh1ubpszuA9qay7EASMDx4lBIrl3TYhdwR6NBxyUvLIp1EpF1Vhn5+hfVzlO+SbxTIEb4YYGY+rUHHyLqEx8f8dglLZcCJeyDOQEF0amykNuclemHgvmMWkqiVBmIbYXXZfROK2RhBlmuBwZihpGzTECmly+Yg3Yen50vEserh6VC2wU1kHuGtwCfjLFt1mNETyg+F9jmUZKuRM73+/Ys+y9oEB7aoVtLD14kSbENOtJ0+HSfGHshQaIA3KvUqQx0G3wZfqjRPPhWC/v36l4QXe0/MUIf8X/lJuS4GEwQ0dY1sN8q5qQ7SIiyBOmpJ6Uu/oyDNELVNhyygmlCjLCqfziOKAHWD5n8wSU3Fdkhlz+2R2+3xcwFf0pIEgnnasrYpq8cVDXgVDqm+zD8Ona2D8D497tBn8RmRCEg9Hnq6WaYf4FhAmZXUqhz46qXjzYSvwDgmYhg9eJf24N20B9w5wfk4jDHizqBeC26lBJmhwq9z4UP6ET6kH4FD7yD68R1wRX0CTEEh567I4zcYQFUMN00UXIInRjCVsF0A+vRwv8hFngr66s24LXBr5Jklmw2DFpF19KXbEWKLzmrvW3c+m8GDbFoNp8QFMyL32eptxmO7gyJ0xb1g6Oom8vzienz2ndF3AHcSO4isf9gWYs2AxAil+/HXsCr0rhw36wsjLr7NBZH/Lsrxhuiuiz9oN8E33t6B+TMWoTJLG833xTivdBCfKPxoaUpA1vbIyI+a68tF9aUtQkNPFR9oeMmEklMR96T9N7rf8vzQX1nEO9/Q8kNevxrC3JF9jLIigTeufs3LFD9Kh+Xs9Oz0bWRO6zwNFexLv819AS/m5J6QOXWu1FYY17Zj9zb77PsvG2X/fp6mxVmrpTJdD4hjXZdYi90ET8lQE1z+tNnkVDh/o95u+XO3cnLylMr1C8tSane8dY5BvrrqF43X4pm7aBJrzMPRCkz0GVgq5vVKomI4MZdPYpPhdWnRT0TZRVFA60e3HpUta9nV25fPPyj7/gFhUnLy
+sidebar_class_name: "get api-method"
+info_path: docs/API/Iglu Controller/iglu-controller-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get Info about all Builders for a Cache"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/builder"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Returns all Builders for a given CacheID
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"cacheID","in":"query","required":true,"description":"The Cache ID that you want to query.","schema":{"type":"integer","format":"int64"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"A 200 Is returned if the Auth was correct and a  builder with the given ID was found","content":{"application/json":{"schema":{"type":"array","items":{"type":"object","properties":{"builder":{"type":"object","properties":{"id":{"type":"number"},"name":{"type":"string"},"description":{"type":"string"},"enabled":{"type":"boolean"},"trigger":{"type":"string"},"cron":{"type":"string"},"webhookurl":{"type":"string"}},"required":["id","name","description","enabled","trigger","webhookurl"],"title":"builder"},"git":{"type":"object","properties":{"repository":{"type":"string"},"branch":{"type":"string"},"gitusername":{"type":"string"},"gitkey":{"type":"string"},"requiresauth":{"type":"boolean"},"noclone":{"type":"boolean"}},"title":"git"},"buildoptions":{"type":"object","properties":{"cores":{"type":"number"},"maxjobs":{"type":"number"},"keep_going":{"type":"boolean"},"extraargs":{"type":"string"},"substituters":{"type":"array","items":{"type":"object","properties":{"url":{"type":"string"},"signingKeys":{"type":"array","items":{"type":"string"}}},"title":"substituter"}},"parallelbuilds":{"type":"boolean","description":"Defines wether or not to start new builds while an old build is already running"},"command":{"type":"string"}},"title":"buildoptions"},"cachix":{"type":"object","properties":{"push":{"type":"boolean"},"target":{"type":"string"},"apikey":{"type":"object","properties":{"key":{"type":"number"},"id":{"type":"number"}},"title":"apikey"},"signingkey":{"type":"object","properties":{"id":{"type":"number"},"privateKey":{"type":"string"},"publicKey":{"type":"string"}},"title":"signingkey"},"builder_id":{"type":"string"},"buildoutputdir":{"type":"string"},"id":{"type":"number"}},"title":"cachix"},"cache":{"type":"object","properties":{"id":{"type":"number"},"githubusername":{"type":"string"},"ispublic":{"type":"boolean"},"name":{"type":"string"},"permission":{"type":"string"},"preferredcompressionmethod":{"type":"string"},"uri":{"type":"string"},"priority":{"type":"number"},"problems":{"type":"array","items":{"type":"object","properties":{"heading":{"type":"string"},"description":{"type":"string"}}}}},"title":"cache"},"lastrun":{"type":"object","properties":{"log":{"type":"string"}},"title":"builderRun"}},"title":"dbBuilder"}}}}},"400":{"description":"A 400 Error is returned if the given cacheID is invalid or not found","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"string"}}}}}},"403":{"description":"A 403 Error is returned if the request was not properly authenticated","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"string"}}}}}},"500":{"description":"A 500 Error is returned in case the Server encounters a generic Error in the fetching of the builders","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"string"}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      
