@@ -1,0 +1,72 @@
+---
+id: create-a-new-builder
+title: "Create a new Builder"
+description: "Create a new Builder using the REST API."
+sidebar_label: "Create a new Builder"
+hide_title: true
+hide_table_of_contents: true
+api: eJztWEtvGzcQ/ivEnhJAluQ27cEoCjh2Crg91LCVk2IU3N2RljGX3PBhWxD03ztD7lNax3Z6cA/2wdCSw+E3w5lvhtwmOdjMiMoJrZKT5MwAd8A4U3DPPnohczDMW6HWzBXArj5dL9jp5cU0mSQVN7wEB8YmJ8ttovADFWQ8K+DiHOcF6fvmwWzww8A3LwzkyYkzHiZ7uy5Q9RktZBfnuA93bKM9u+fKMadZFjHR/mmNSChCYHFFyZOTbeI2FW0ulIM1GJxaaVNyF4d+/ZDsdjcRA1j3UecbWvO04agn06hSOZLnVSVFxkl+9tXSou0hAp1+hcwNDF5G1wxtniRrQWLBINoHrRcPCaKsjK7AOAGW1EavtuqtM3gUyW7PgSPzpP4pWPpMakXIvJGExXCVFZ2QPfWOPr0FU5vg9C2oEZS1pm7DVGsJXBESUj6GsN5ubGoAYFxpg2lseUR5OLPbNQ5/wjOZLkuu8uZ8FkasY1hp7yrvzgX95lLq+89qZQDqbJASZAgdS8GJClL9AKSl5A9/6tSGeEKzaNan1gnnQ/oc+LPZf9RtfUQHApMElC/JBlTgOR3rPaSF1re0ucFgudnVP0bWDlPiqvYIEyvW35UJy74EHV8SQtQ5ZQxv302jR7nnuVGZzpmj041/D5lg17h8dGpwCp0EN4YTaQkHpR2LleFpPRbgVqwV/vwLNs9R3g9SxCTDWIePJnYtTzwRv6XOQ0x6WxwGV5h8TuBw73QMl7DppU+R/65bo0ZtjqJPCAVcIwc5sL2m+sDLGI9XkbxrITzRSisbDfppPj/k8ytw3qgYvFQ5avLHomKZ9VkG1q68lG8U/0bxbxT/RvFvFP9/o/gPL2H1FHv6QO0ll9T6o4QOQZwD0IdQd1yKnPEMQyUPtxkdFNTs/h+qwNDzYIweS5Ke1VGkMfL4ZaWrNmTCxBSY0tFwNJXk6qsXmd3YizNKO7bSPlDdaxn588uMLHmONzGvMDoLhEsw4fXg//KcQLwGc4e0CSpDVxPXMK42LKjBIPSmuUBndawzhEQ9yCtZRYQKrtBIJUmlbdDGqRAns7S9+9pgU7zdBwJMCucqezKbwQMvKwlTLGIzXonZ3XFCF2wLGVrqNmEFjv9zS+ywvOnPXZM5EXEr0WIm/c29PhAEcBOgxB9/NJf6R6rZqaK3CYachAkQ3B2fAVhczn7baG+OQuvwe3AM+fiqexX4FM3qmrLHNmqH6xasbY7i40Z0VivUdEHdyLD5qRe17U4nV3c5+63BoH/o7TNoGzqSj61AJ9cr5t3goIZHRPtVO4726nQcaCvzvC3E8/2620ZQu9+gci6bcQyVQQWMhaxnyiNlqtN7WJ26uViUCDUdvlArHWKvzo6LtfTsDJPRaLTaUCgdHPyiIHK1IbZynfkSEzfms448MKJkysLzVjeG69G1rlmyDGsujaa0vnnX5BiGVuHTkGICBY5s8Z7evCgjI5b5dD49DrUWExg91AvbRx6z9i4ULfG85NWvzlQHD25WSS76/X+kkGVT16kvKYhccGi7TbmFz0budjQcnwUpLHJheSopmlZc2v2XwT7Id02z+p794HvhKPbAQL1nSyycnqQCo91xIwheYDG0BjjZRbjjsrOI7mhBmru1Bzy+mzQrTvHqWbnvyt70yPny7+sFpXb9Zlnng+H3xCL4H3FiQgdvBU4NY9tEcrX2fE2yUSf9/Qvfnpfu
+sidebar_class_name: "post api-method"
+info_path: docs/API/Iglu Controller/iglu-controller-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Create a new Builder"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/builder"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Create a new Builder using the REST API.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"cacheID","in":"query","required":true,"description":"The Cache ID that you want to create the builder in.","schema":{"type":"integer","format":"int64"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"description":"Create a new Builder","content":{"application/json":{"schema":{"type":"object","required":["name","description","git","build","cachix"],"properties":{"name":{"type":"string"},"description":{"type":"string"},"git":{"type":"object","required":["noClone","url","branch","requiresAuth","username","token"],"properties":{"noClone":{"type":"boolean"},"url":{"type":"string"},"branch":{"type":"string"},"requiresAuth":{"type":"boolean"},"username":{"type":"string"},"token":{"type":"string"}}},"build":{"type":"object","required":["command","buildTrigger","outputDir","allowUnfree","parallelBuilds","sandboxed","maxJobs","cores","substituters"],"properties":{"command":{"type":"string"},"buildTrigger":{"type":"string","enum":["manual","webhook","cron"]},"cron":{"type":"string","description":"Required if buildTrigger is \"cron\""},"outputDir":{"type":"string"},"allowUnfree":{"type":"boolean"},"parallelBuilds":{"type":"boolean"},"sandboxed":{"type":"boolean"},"maxJobs":{"type":"integer"},"cores":{"type":"integer"},"substituters":{"type":"array","items":{"type":"object","properties":{"url":{"type":"string"},"signingKeys":{"type":"array","items":{"type":"string"}}},"title":"substituter"}}}},"cachix":{"type":"object","required":["mode","push"],"properties":{"mode":{"type":"string","enum":["manual","auto"]},"cachixPublicSigningKey":{"type":"string"},"cachixSigningKey":{"type":"string"},"push":{"type":"boolean"}}}},"title":"builderCreationRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Returned if the request was successfull","content":{"application/json":{"schema":{"type":"object","required":["name","description","git","build","cachix"],"properties":{"name":{"type":"string"},"description":{"type":"string"},"git":{"type":"object","required":["noClone","url","branch","requiresAuth","username","token"],"properties":{"noClone":{"type":"boolean"},"url":{"type":"string"},"branch":{"type":"string"},"requiresAuth":{"type":"boolean"},"username":{"type":"string"},"token":{"type":"string"}}},"build":{"type":"object","required":["command","buildTrigger","outputDir","allowUnfree","parallelBuilds","sandboxed","maxJobs","cores","substituters"],"properties":{"command":{"type":"string"},"buildTrigger":{"type":"string","enum":["manual","webhook","cron"]},"cron":{"type":"string","description":"Required if buildTrigger is \"cron\""},"outputDir":{"type":"string"},"allowUnfree":{"type":"boolean"},"parallelBuilds":{"type":"boolean"},"sandboxed":{"type":"boolean"},"maxJobs":{"type":"integer"},"cores":{"type":"integer"},"substituters":{"type":"array","items":{"type":"object","properties":{"url":{"type":"string"},"signingKeys":{"type":"array","items":{"type":"string"}}},"title":"substituter"}}}},"cachix":{"type":"object","required":["mode","push"],"properties":{"mode":{"type":"string","enum":["manual","auto"]},"cachixPublicSigningKey":{"type":"string"},"cachixSigningKey":{"type":"string"},"push":{"type":"boolean"}}}},"title":"builderCreationRequest"}}}},"400":{"description":"Returned if the request body was malformed or is deemed invalid according to the schema","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"string"}},"title":"error"}}}},"401":{"description":"Returned if the request was invalid, i.e no body or the cacheID is invalid or not found","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"string"}},"title":"error"}}}},"403":{"description":"Returned if the request was made aunauthenticated","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"string"}},"title":"error"}}}},"500":{"description":"Returned if the Server encounters any errors during the creation process","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"string"}},"title":"error"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

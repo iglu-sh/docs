@@ -1,0 +1,64 @@
+---
+id: returns-user-information-for-an-api-token
+title: "returns user information for an API Token"
+description: "Get user information about a given API Token"
+sidebar_label: "returns user information for an API Token"
+hide_title: true
+hide_table_of_contents: true
+api: eJy9Vk1PGzEQ/SuWT60UklC1F1RViigF1Atq6Qmhyrs7yRp27a09DqQR/70z4wQSsmmFhIoCbOz5eJ73PLNLXUEsg+3QeqeP9CmgShGCsm7qQ2t4WZnCJ1RGzewcnJpcnKtLfwtOD3SEMgWLC310tdSmsz9vgZ+vH64HOkDsvIsQ9dFSvxuP+d92sm+AKTiolJ1SdEl7Z6Ka+uQqCl56h+CQ/UzXNbYUNKObyM5LHcsaWsNPuOiAwvniBkokxy74DgLanLo0ZBg37EwIZkFmFqGN//a31YaNS20BQT8M9MxinQoG7UwLGyYRg3UzNrGxSwXh3tgsvG/AON7d60a5Wxujzcfc3Q4whRCgKn1Lz2LYAta+6jUnfvaEsT5T13M4qkDRbFfnhVWrwVScqS/1lgp29vlnoNFiw6vCnuYVB3cQ8djEGqoz/vv6nHYG617EGUWfS+oqg0C//X4VBLo0oX9zahuo6ST7d6P93a+RUkQArtyqwsZ+tP21LyP68Jessh3TdGrv+2VjAu5J+STHPlafKJXkWyTzLfps0OjM/fvx4W6zmChaVmckK+5OUYWN5oE1qEnCWtqHdaWn61HiQDmPioif24rsfBC7AkygCMgdTOzZOnXE4eu1HLqevo/zlbY/9DXDiaJldcKeW8e7qwknA/8OgZSkiHPqjwghKuMWZBoTDP8TdMK+7jR6BuIsN0aPmEGZB4wxyjhIoWGyEbt4NBrBvWm7BoakkhENitH8UPOQWA+Q7wwvI3gcI48YOAYHFxtuokIhreSHLzKonrAOnlc2z6yvQNXKpcyjbS2FjwufwoEI4pMIlWefpF/J83zWJHVM9Q2+aciBou0kuayJNPpw+MqXqSUu8vT0WZ89QYbqkjY21sif79fa5Up8LoJnpq7frEuZJ49U0pLBQazfsgC48BnLeDgeHspl9RFbI/znaaOzrOLujKcn0tPWcH/Wph8F9tKXhBWLCPc46hpjXR5LDQfN+rmSDqBJDzUh5u/LZWEi/AjNwwMv/0oQ5MWCjmmCNQXzQq8ZA5kz3F9JcCIaPSlL6Fiac9MkGQ3PbwPr7lHGpyeXZGvSVuN/JjCJvh40brERm2CKhRyVoA5WIERMlIiuzB8neUBo
+sidebar_class_name: "get api-method"
+info_path: docs/API/Iglu Controller/iglu-controller-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"returns user information for an API Token"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/user"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Get user information about a given API Token
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Returned if a user was found","content":{"application/json":{"schema":{"type":"object","properties":{"caches":{"type":"array","items":{"type":"object","properties":{"id":{"type":"number"},"githubusername":{"type":"string"},"ispublic":{"type":"boolean"},"name":{"type":"string"},"permission":{"type":"string"},"preferredcompressionmethod":{"type":"string"},"uri":{"type":"string"},"priority":{"type":"number"},"problems":{"type":"array","items":{"type":"object","properties":{"heading":{"type":"string"},"description":{"type":"string"}}}}},"title":"cache"}},"newestCashedHashes":{"type":"array","items":{"type":"object","properties":{"id":{"type":"number"},"path":{"type":"string"},"cache":{"type":"number"},"updatedat":{"type":"string"},"cderiver":{"type":"string"},"cfilehash":{"type":"string"},"cfilesize":{"type":"string"},"creferences":{"type":"string"},"csig":{"type":"string"},"cstorehash":{"type":"string"},"cstoresuffix":{"type":"string"},"parts":{"type":"string"},"compression":{"type":"string"}},"title":"hash"}}},"title":"userData"}}}},"401":{"description":"A 401 Header is returned if the Auth was incorrect, not provided or the bearer token was corrupted","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"string"}}}}}},"500":{"description":"A 500 Error is returned when the Server encounters any issue.","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"string"}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      
