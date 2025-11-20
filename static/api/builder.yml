@@ -12,10 +12,10 @@ servers:
 paths:
   /build:
     get:
-      summary: Start build websocket
+      summary:  /api/v1/build
       description: |-
         Create a websocket to start a build job. 
-        More information about the Websocket you can find [here](/docs/Components/Iglu%20Builder#Websocket)
+        More information about the Websocket can be found [here](/docs/Components/Iglu%20Builder#Websocket)
       operationId: build
       responses:
         '101':
@@ -31,7 +31,7 @@ paths:
                 description: Server-Antworten wie Status, Logs oder Fehler.
   /healthcheck:
     get:
-      summary: healthcheck
+      summary: /api/v1/healthcheck
       description: Endpoint to check the service health of the Builder
       operationId: healthcheck
       responses:
@@ -55,62 +55,193 @@ components:
   schemas:
     buildJob:
       type: object
-      properties:
-        git:
-          type: object
-          properties:
-            repository:
-              type: string
-            branch:
-              type: string
-            gitUsername:
-              type: string
-            gitKey:
-              type: string
-            requiresAuth:
-              type: boolean
-            noClone:
-              type: boolean
-          required:
-            - noClone
-        buildOptions:
-          type: object
-          properties:
-            cores:
-              type: number
-            maxJobs:
-              type: number
-            keep_going:
-              type: boolean
-            extraArgs:
-              type: string
-            substituters:
-              type: array
-              items:
-                type: string
-            trustedPublicKeys:
-              type: array
-              items:
-                type: string
-            command:
-              type: string
-            cachix:
-              type: object
-              properties:
-                push:
-                  type: boolean
-                target:
-                  type: string
-                apiKey:
-                  type: string
-                signingKey:
-                  type: string
-              required:
-                - push
-          required:
-            - command
-            - cachix
       required:
-        - git
-        - buildOptions
+        - git_config
+        - build_options
+        - cachix_config
+      properties:
+        git_config:
+          $ref: '#/components/schemas/GitConfig'
+        builder:
+          $ref: '#/components/schemas/Builder'
+        cachix_config:
+          $ref: '#/components/schemas/CachixConfig'
+        build_options:
+          $ref: '#/components/schemas/BuildOptions'
+      additionalProperties: true
 
+    GitConfig:
+      type: object
+      required:
+        - noclone
+      properties:
+        repository:
+          type: string
+          description: Git repository URL
+          example: "https://github.com/user/repo.git"
+        builder_id:
+          type: number
+          description: ID of the associated builder
+          example: 1
+        id:
+          type: number
+          description: Unique ID of the Git configuration
+          example: 1
+        branch:
+          type: string
+          description: Git branch name
+          example: "main"
+        gitusername:
+          type: string
+          description: Git username for authentication
+          example: "username"
+        gitkey:
+          type: string
+          format: password
+          description: Git authentication key
+        requiresauth:
+          type: boolean
+          description: Indicates whether authentication is required
+          example: false
+        noclone:
+          type: boolean
+          description: Prevents cloning of the repository
+          example: false
+      additionalProperties: false
+
+    Builder:
+      type: object
+      properties:
+        id:
+          type: number
+          description: Unique builder ID
+          example: 1
+        cache_id:
+          type: number
+          description: ID of the associated cache
+          example: 1
+        name:
+          type: string
+          description: Name of the builder
+          example: "Production Builder"
+        description:
+          type: string
+          description: Description of the builder
+          example: "Main builder for production"
+        enabled:
+          type: boolean
+          description: Indicates whether the builder is enabled
+          example: true
+        trigger:
+          type: string
+          description: Trigger type for the build
+          example: "manual"
+          enum: ["manual", "webhook", "cron"]
+        cron:
+          type: string
+          description: Cron expression for scheduled builds
+          example: "0 0 * * *"
+        arch:
+          type: string
+          description: Target architecture
+          example: "x86_64-linux"
+        webhookurl:
+          type: string
+          format: uri
+          description: Webhook URL for notifications
+          example: "https://example.com/webhook"
+      additionalProperties: false
+
+    CachixConfig:
+      type: object
+      properties:
+        id:
+          type: number
+          description: Unique Cachix configuration ID
+          example: 1
+        builder_id:
+          type: number
+          description: ID of the associated builder
+          example: 1
+        push:
+          type: boolean
+          description: Enables push to Cachix
+          example: true
+        target:
+          type: string
+          description: Cachix cache name
+          example: "my-cache"
+        apikey:
+          type: string
+          format: password
+          description: Cachix API key
+        signingkey:
+          type: string
+          format: password
+          description: Signing key for cache
+        buildoutputdir:
+          type: string
+          description: Directory for build outputs
+          example: "/var/lib/builds"
+      additionalProperties: false
+
+    BuildOptions:
+      type: object
+      required:
+        - command
+      properties:
+        id:
+          type: number
+          description: Unique build options ID
+          example: 1
+        builder_id:
+          type: number
+          description: ID of the associated builder
+          example: 1
+        cores:
+          type: number
+          description: Number of CPU cores to use
+          minimum: 1
+          example: 4
+        maxjobs:
+          type: number
+          description: Maximum number of parallel jobs
+          minimum: 1
+          example: 8
+        keep_going:
+          type: boolean
+          description: Continue on errors
+          example: false
+        extraargs:
+          type: string
+          description: Additional build arguments
+          example: "--verbose"
+        substituters:
+          type: array
+          description: List of binary cache substituters
+          items:
+            $ref: '#/components/schemas/Substituter'
+        parallelbuilds:
+          type: boolean
+          description: Enables parallel builds
+          example: true
+        command:
+          type: string
+          description: Build command to execute
+          example: "nix build"
+      additionalProperties: false
+
+    Substituter:
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+          description: URL of the substituter
+          example: "https://cache.nixos.org"
+        public_signing_keys:
+          type: array
+          description: List of public signing keys
+          items:
+            type: string
+            example: "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="

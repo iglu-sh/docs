@@ -1,0 +1,128 @@
+openapi: 3.0.4
+info:
+  title: Iglu Cache API
+  description: |-
+    This is the documentation of the Iglu Cache API. This Cache is part of the [Iglu Project](https://github.com/iglu-sh).
+  version: 0.0.1
+
+servers:
+  - url: https://example.com
+paths:
+  /api/v1/cache/{cache}:
+    parameters:
+      - $ref: "#/components/parameters/cache"
+    get:
+      summary: /api/v1/cache/{cache}
+      description: |-
+        Get settings of a {cache}
+      responses:
+        "404":
+          $ref: "#/components/responses/cacheNotFound"
+        "400":
+          description: No public signing key
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: There is no public signing key for this cache, add one by using cachix generate-keypair {cache}
+        "200":
+          description: Settings of the cache
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  githubUsername:
+                    type: string
+                    example: user
+                  isPublic:
+                    type: boolean
+                    example: false
+                  name:
+                    type: string
+                    example: default
+                  permission:
+                    type: string
+                    example: Read
+                  preferredCompressionMethod:
+                    type: string
+                    example: zstd
+                  publicSigningKeys:
+                    type: array
+                    items:
+                      type: string
+                      example: default:N70oHEuy1jSzIZ5xEZdqCv4/49KERecq/P3sleSLxjI=
+                  uri:
+                    type: string
+                    example: http://example.com
+                  priority:
+                    type: number
+                    example: 40
+        "405":
+          $ref: "#/components/responses/methodNotFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+  /{cache}/nix-cache-info:
+    parameters:
+      - $ref: "#/components/parameters/cache"
+    post:
+      summary: /{cache}/nix-cache-info
+      description: |-
+        Get cache information
+      responses:
+        "200":
+          description: Information of the cache
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: |
+                  StoreDir: /nix/store
+                  WantMassQuery: 1
+                  Priority: 40
+        "404":
+          $ref: "#/components/responses/cacheNotFound"
+        "403":
+          description: Cache Not Public
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: Cache Not Public
+        "405":
+          $ref: "#/components/responses/methodNotFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+
+
+components:
+  responses:
+    "methodNotFound":
+      description: Method Not Allowed
+      content:
+        text/plain:
+          schema:
+            type: string
+            example: Method Not Allowed
+    "internalServerError": 
+      description: Internal Server Error
+      content:
+        text/plain:
+          schema:
+            type: string
+            example: Internal Server Error
+    "cacheNotFound":
+      description: Cache Not Found
+      content:
+        text/plain:
+          schema:
+            type: string
+            example: Cache Not Found
+  parameters:
+    "cache":
+      in: path
+      name: cache
+      schema:
+        type: string
+      required: true
+      description: Name of the Cache

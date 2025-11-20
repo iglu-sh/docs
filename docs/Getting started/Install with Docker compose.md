@@ -31,6 +31,8 @@ services:
       POSTGRES_DB: cache
       POSTGRES_HOST: postgres
       POSTGRES_PORT: 5432
+      PROM_ENABLE: true
+      PROM_PORT: 9464
       CACHE_FILESYSTEM_DIR: /tmp/cache #Should be mounted to an outside container if you want to persist files, else set to something in the container
     volumes:
       - ./cache/nar_files:/tmp/cache

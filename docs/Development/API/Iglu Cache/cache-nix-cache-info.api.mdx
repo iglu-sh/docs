@@ -1,0 +1,72 @@
+---
+id: cache-nix-cache-info
+title: "/{cache}/nix-cache-info"
+description: "Get cache information"
+sidebar_label: "/{cache}/nix-cache-info"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVE1T2zAQ/SuaPcGMEocWLrox/RoO0LTQ4RByUOxNrNaWzGpNyXj03zuS45IP0gs9WVpr9719+6QOCvQ5mYaNs6DgC7LIdV6iMHbpqNYpLoHQN8569KA6eDeZxM9u5tXLeeGWgkvsC4GE3FlGyzGH8ZmzptLGxp3PS6x1iq8bBAWeydgVSMBnXTdVDN2yI/xoSInMmufMx+2DvdeWr7X331qktRJnD3ZKxpHhtRLnkwcLIYQg4Xzy/pDph9TfjWMxbReVyd/K8KDegH3+L+zPrrXF/4Puyw3IF4fI18ilK9LZy6pyv/HN4K9U7PEvXvcHI1ldiVukJyTxicjRWym8XjT0NBpNukZG8qBmHcSq0GguQYLVdUwfDHoMKkTjP7aGsADF1KLca+pG1zi4Pc0CwlxCnYSJaM4zyB5UQdYlvBB9PErLUbxkET+x72m2VIGCkrnxKstSqw7HuatT6ZQQeRruBVhVbY8sLqdXsM/vrjReGJ/4FS5va7S8c0V388ciJfR740WjiYeTs3R0Su4n5jw/GQiuDJftIvLLzKpqR748HYOE2E5PYTKejM+iklGMWqfRbuQ/LshOF92LR46+T5u5bTkoyF7KbiP/DNQw7j24uYQyDkrNoOsW2uMPqkKI4cf4uoCazSU8aTJ6ETWfdVAYH9cFqKWu/L4rtvmefN/451QceuUI7U1Q23UUUldt3IGEX7j+69kwDxJK1AVSYtT/u8xzbHgra7vwtjGnX2/vIIQ/GioJ5g==
+sidebar_class_name: "post api-method"
+info_path: docs/Developer/API/Iglu Cache/iglu-cache-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"/\\{cache\\}/nix-cache-info"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/{cache}/nix-cache-info"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Get cache information
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"in":"path","name":"cache","schema":{"type":"string"},"required":true,"description":"Name of the Cache"}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Information of the cache","content":{"text/plain":{"schema":{"type":"string","example":"StoreDir: /nix/store\nWantMassQuery: 1\nPriority: 40\n"}}}},"403":{"description":"Cache Not Public","content":{"text/plain":{"schema":{"type":"string","example":"Cache Not Public"}}}},"404":{"description":"Cache Not Found","content":{"text/plain":{"schema":{"type":"string","example":"Cache Not Found"}}}},"405":{"description":"Method Not Allowed","content":{"text/plain":{"schema":{"type":"string","example":"Method Not Allowed"}}}},"500":{"description":"Internal Server Error","content":{"text/plain":{"schema":{"type":"string","example":"Internal Server Error"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      
