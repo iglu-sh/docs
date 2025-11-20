@@ -55,62 +55,193 @@ components:
   schemas:
     buildJob:
       type: object
-      properties:
-        git:
-          type: object
-          properties:
-            repository:
-              type: string
-            branch:
-              type: string
-            gitUsername:
-              type: string
-            gitKey:
-              type: string
-            requiresAuth:
-              type: boolean
-            noClone:
-              type: boolean
-          required:
-            - noClone
-        buildOptions:
-          type: object
-          properties:
-            cores:
-              type: number
-            maxJobs:
-              type: number
-            keep_going:
-              type: boolean
-            extraArgs:
-              type: string
-            substituters:
-              type: array
-              items:
-                type: string
-            trustedPublicKeys:
-              type: array
-              items:
-                type: string
-            command:
-              type: string
-            cachix:
-              type: object
-              properties:
-                push:
-                  type: boolean
-                target:
-                  type: string
-                apiKey:
-                  type: string
-                signingKey:
-                  type: string
-              required:
-                - push
-          required:
-            - command
-            - cachix
       required:
-        - git
-        - buildOptions
+        - git_config
+        - build_options
+        - cachix_config
+      properties:
+        git_config:
+          $ref: '#/components/schemas/GitConfig'
+        builder:
+          $ref: '#/components/schemas/Builder'
+        cachix_config:
+          $ref: '#/components/schemas/CachixConfig'
+        build_options:
+          $ref: '#/components/schemas/BuildOptions'
+      additionalProperties: true
 
+    GitConfig:
+      type: object
+      required:
+        - noclone
+      properties:
+        repository:
+          type: string
+          description: Git Repository URL
+          example: "https://github.com/user/repo.git"
+        builder_id:
+          type: number
+          description: ID des zugehörigen Builders
+          example: 1
+        id:
+          type: number
+          description: Eindeutige ID der Git-Konfiguration
+          example: 1
+        branch:
+          type: string
+          description: Git Branch Name
+          example: "main"
+        gitusername:
+          type: string
+          description: Git Benutzername für Authentifizierung
+          example: "username"
+        gitkey:
+          type: string
+          format: password
+          description: Git Authentifizierungsschlüssel
+        requiresauth:
+          type: boolean
+          description: Gibt an, ob Authentifizierung erforderlich ist
+          example: false
+        noclone:
+          type: boolean
+          description: Verhindert das Klonen des Repositories
+          example: false
+      additionalProperties: false
+
+    Builder:
+      type: object
+      properties:
+        id:
+          type: number
+          description: Eindeutige Builder ID
+          example: 1
+        cache_id:
+          type: number
+          description: ID des zugehörigen Caches
+          example: 1
+        name:
+          type: string
+          description: Name des Builders
+          example: "Production Builder"
+        description:
+          type: string
+          description: Beschreibung des Builders
+          example: "Hauptbuilder für Production"
+        enabled:
+          type: boolean
+          description: Gibt an, ob der Builder aktiviert ist
+          example: true
+        trigger:
+          type: string
+          description: Trigger-Typ für den Build
+          example: "manual"
+          enum: ["manual", "webhook", "cron"]
+        cron:
+          type: string
+          description: Cron-Expression für geplante Builds
+          example: "0 0 * * *"
+        arch:
+          type: string
+          description: Ziel-Architektur
+          example: "x86_64-linux"
+        webhookurl:
+          type: string
+          format: uri
+          description: Webhook URL für Benachrichtigungen
+          example: "https://example.com/webhook"
+      additionalProperties: false
+
+    CachixConfig:
+      type: object
+      properties:
+        id:
+          type: number
+          description: Eindeutige Cachix-Konfiguration ID
+          example: 1
+        builder_id:
+          type: number
+          description: ID des zugehörigen Builders
+          example: 1
+        push:
+          type: boolean
+          description: Aktiviert Push zu Cachix
+          example: true
+        target:
+          type: string
+          description: Cachix Cache-Name
+          example: "my-cache"
+        apikey:
+          type: string
+          format: password
+          description: Cachix API Key
+        signingkey:
+          type: string
+          format: password
+          description: Signing Key für Cache
+        buildoutputdir:
+          type: string
+          description: Verzeichnis für Build-Outputs
+          example: "/var/lib/builds"
+      additionalProperties: false
+
+    BuildOptions:
+      type: object
+      required:
+        - command
+      properties:
+        id:
+          type: number
+          description: Eindeutige Build-Options ID
+          example: 1
+        builder_id:
+          type: number
+          description: ID des zugehörigen Builders
+          example: 1
+        cores:
+          type: number
+          description: Anzahl der zu verwendenden CPU-Kerne
+          minimum: 1
+          example: 4
+        maxjobs:
+          type: number
+          description: Maximale Anzahl paralleler Jobs
+          minimum: 1
+          example: 8
+        keep_going:
+          type: boolean
+          description: Fortsetzen bei Fehlern
+          example: false
+        extraargs:
+          type: string
+          description: Zusätzliche Build-Argumente
+          example: "--verbose"
+        substituters:
+          type: array
+          description: Liste von Binary Cache Substituters
+          items:
+            $ref: '#/components/schemas/Substituter'
+        parallelbuilds:
+          type: boolean
+          description: Aktiviert parallele Builds
+          example: true
+        command:
+          type: string
+          description: Auszuführender Build-Befehl
+          example: "nix build"
+      additionalProperties: false
+
+    Substituter:
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+          description: URL des Substituters
+          example: "https://cache.nixos.org"
+        public_signing_keys:
+          type: array
+          description: Liste von öffentlichen Signing Keys
+          items:
+            type: string
+            example: "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
