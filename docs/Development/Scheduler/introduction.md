@@ -16,3 +16,21 @@ This flow is executed on startup, everytime a Scheduler starts up. In the future
 To Start a Job on any Node, the Controller receives an HTTP Webhook Request (in any of the three Trigger methods) to `/api/v1/webhooks/builder/<hook>`, this then triggers this flow of communication:  
 All Red Arrows represent Redis Channel Communication, all orange ones represent HTTP REST calls:  
 ![New Job Conversation](/img/docs/Components/Scheduler/job-conversation-flow.svg)
+
+During this flow, the Scheduler runs through several stages in the build process.  
+There are three distinct phases in the build process:
+### Phase 1: Job Application
+In this phase, the Controller sends out a broadcast message to all schedulers, advertising a new job. All schedulers then check if they are able to build the job (based on their current load and the job requirements).   
+If they are able to build the job, they send an application message back to the controller. The controller then collects all applications and selects one scheduler to run the job.
+The flow looks like this:
+![Job Application Flow](/img/docs/Components/Scheduler/jobFlow/phase_1_job_application.svg)
+### Phase 2: Container Startup
+In this phase, the Controller notifies the selected Scheduler that it was chosen to build the job.  
+The Scheduler then starts up a new iglu-builder container (or any builder image that was configured) with the job parameters. Once the container is started, the next phase (the websocket phase) begins. 
+The flow looks like this:
+![Container Startup Flow](/img/docs/Components/Scheduler/jobFlow/phase_2_container_startup.svg)
+### Phase 3: Websocket Communication
+In this phase, the Scheduler has started the builder container, and now needs to communicate with it. This is done through a websocket connection.  
+This websocket connection and all the messages sent and received are documented [in the builder section of these docs](/docs/Components/Iglu%20Builder).  
+The flow looks like this:
+![Websocket Communication Flow](/img/docs/Components/Scheduler/jobFlow/phase_3_websocket_communication.svg)
