@@ -15,7 +15,7 @@ paths:
       summary:  /api/v1/build
       description: |-
         Create a websocket to start a build job. 
-        More information about the Websocket you can find [here](/docs/Components/Iglu%20Builder#Websocket)
+        More information about the Websocket can be found [here](/docs/Components/Iglu%20Builder#Websocket)
       operationId: build
       responses:
         '101':
