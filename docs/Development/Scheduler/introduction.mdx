@@ -1,0 +1,50 @@
+import { useColorMode } from '@docusaurus/theme-common'
+
+export function Image(props){
+  let { colorMode } = useColorMode(); // 'light' oder 'dark'
+  let imagePath = props.src.split(".svg")[0] + "_" + colorMode + ".svg"
+  return <img src={imagePath}/>
+}
+
+
+# The Iglu Scheduler
+The Iglu Scheduler is responsible for managing iglu-builders. 
+It gets instructions from the Iglu Controller using Redis Channels.
+
+## Startup
+On Startup the Scheduler runs through a series of tasks.  
+This is done mainly through the [startup.ts](https://github.com/iglu-sh/scheduler/blob/main/lib/startup.ts) file. This file handles env var validation and registration with the controller. A usual startup, however also includes connecting to Redis and setting up build listeners, which is done in the index.ts file after the startup.ts file has done its job.  
+### Startup Routine
+The usual startup routine looks like this:
+<Image src="/img/docs/Components/Scheduler/Scheduler-Startup.svg"/>
+
+### Controller Registration Flow
+The afforementioned Controller Registration Flow looks like this:  
+<Image src="/img/docs/Components/Scheduler/startup-conversation.svg"/>
+
+This flow is executed on startup, everytime a Scheduler starts up. In the future, this should also provide the config to the Scheduler, so you won't have to set all the env vars for every controler. However this is not implemented yet.
+## Job Flow
+To Start a Job on any Node, the Controller receives an HTTP Webhook Request (in any of the three Trigger methods) to `/api/v1/webhooks/builder/<hook>`, this then triggers this flow of communication:  
+All Red Arrows represent Redis Channel Communication, all orange ones represent HTTP REST calls:  
+<Image src="/img/docs/Components/Scheduler/job-conversation-flow.svg"/>
+
+During this flow, the Scheduler runs through several stages in the build process.  
+There are three distinct phases in the build process:
+### Phase 1: Job Application
+In this phase, the Controller sends out a broadcast message to all schedulers, advertising a new job. All schedulers then check if they are able to build the job (based on their current load and the job requirements).   
+If they are able to build the job, they send an application message back to the controller. The controller then collects all applications and selects one scheduler to run the job.
+The flow looks like this:
+<Image src="/img/docs/Components/Scheduler/jobFlow/phase_1_job_application.svg"/>
+
+### Phase 2: Container Startup
+In this phase, the Controller notifies the selected Scheduler that it was chosen to build the job.  
+The Scheduler then starts up a new iglu-builder container (or any builder image that was configured) with the job parameters. Once the container is started, the next phase (the websocket phase) begins. 
+The flow looks like this:
+<Image src="/img/docs/Components/Scheduler/jobFlow/phase_2_container_startup.svg"/>
+
+### Phase 3: Websocket Communication
+In this phase, the Scheduler has started the builder container, and now needs to communicate with it. This is done through a websocket connection.  
+This websocket connection and all the messages sent and received are documented [in the builder section of these docs](/docs/Components/Iglu%20Builder).  
+The flow looks like this:
+<Image src="/img/docs/Components/Scheduler/jobFlow/phase_3_websocket_communication.svg"/>
+
