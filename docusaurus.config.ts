@@ -64,7 +64,7 @@ const config: Config = {
         config: {
           builder: {
             specPath: "static/api/builder.yml",
-            outputDir: "docs/Developer/API/Iglu Builder",
+            outputDir: "docs/Development/API/Iglu Builder",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -73,7 +73,7 @@ const config: Config = {
           } satisfies OpenApiPlugin.Options,
           cache: {
             specPath: "static/api/cache.yml",
-            outputDir: "docs/Developer/API/Iglu Cache",
+            outputDir: "docs/Development/API/Iglu Cache",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",

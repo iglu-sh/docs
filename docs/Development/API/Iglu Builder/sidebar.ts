@@ -4,7 +4,7 @@ const sidebar: SidebarsConfig = {
   apisidebar: [
     {
       type: "doc",
-      id: "Developer/API/Iglu Builder/iglu-builder-api",
+      id: "Development/API/Iglu Builder/iglu-builder-api",
     },
     {
       type: "category",
@@ -12,13 +12,13 @@ const sidebar: SidebarsConfig = {
       items: [
         {
           type: "doc",
-          id: "Developer/API/Iglu Builder/build",
+          id: "Development/API/Iglu Builder/build",
           label: "/api/v1/build",
           className: "api-method get",
         },
         {
           type: "doc",
-          id: "Developer/API/Iglu Builder/healthcheck",
+          id: "Development/API/Iglu Builder/healthcheck",
           label: "/api/v1/healthcheck",
           className: "api-method get",
         },
