@@ -1,8 +1,9 @@
 # First Launch
 Upon initial launch, several configuration steps are required to establish a basic setup.
 
-## Retrieve Your First Signing Key
-During the first startup (**and only during the first startup**), the cache generates a **private signing key**. This key is essential for signing new packages to validate their trustworthiness.
+## Retrieve Your First API-Key
+During the first startup (**and only during the first startup**), the cache
+generates an **API-Key**. This key is essential for authentication against the cache.
 
 Retrieve this key by examining the cache logs using the following command:
 
