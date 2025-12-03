@@ -142,8 +142,7 @@ const config: Config = {
       copyright: `Copyright © ${new Date().getFullYear()} Iglu. Built with Docusaurus.`,
     },
     prism: {
-      theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
+      additionalLanguages: ['yaml', 'python', 'typescript', 'javascript', 'docker', 'bash'],
     },
   } satisfies Preset.ThemeConfig,
 };
