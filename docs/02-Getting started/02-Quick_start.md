@@ -1,20 +1,20 @@
-# Quickstart
+# Quick Start
 
 :::warning
-This project is still work in progress. Please report issues [here](https://github.com/iglu-sh/controller/issues/new)!
+This project is currently in development. Please report issues [here](https://github.com/iglu-sh/controller/issues/new).
 :::
 
-The recommended way to use Iglu is [docker-compose](https://docs.docker.com/compose). You can find the documentation how to install compose [here](https://docs.docker.com/compose/install).
+The recommended method for deploying Iglu is [docker-compose](https://docs.docker.com/compose). Installation instructions for Compose can be found [here](https://docs.docker.com/compose/install).
 
 :::important
-It is important to use our postgres docker, as we made some changes to it:
+It is essential to use the provided PostgreSQL Docker image, as it includes the following custom extensions:
 - cron plugin
 - http plugin
 :::
 
-## 1) Prepare files
-Create a folder with the name `iglu` on your machine and copy the `compose.yml`
-and the `.env` in this directory.
+## 1) Prepare Files
+Create a directory named `iglu` on your system and copy the `compose.yml` and `.env` files into this directory.
+
 ```yaml title="compose.yml"
 version: 3
 services:
@@ -31,7 +31,6 @@ services:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: cache
-    command: ["postgres", "-c", "log_statement=all"]
     volumes:
       - ./dev/postgres:/var/lib/postgresql/data
 
@@ -106,17 +105,17 @@ POSTGRES_USER=iglu
 POSTGRES_PASSWORD=changeme
 
 # CACHE
-CACHE_ROOT_DOMAIN=http://localhost:3000 #External accessable URL of the Cache
+CACHE_ROOT_DOMAIN=http://localhost:3000 #Externally accessible URL of the Cache
 PROM_ENABLE=true
 
 # LOGGING
 LOG_LEVEL=INFO
 
 # CONTROLLER
-CONTROLLER_URL=http://localhost:3001 #External accessable URL of the Controller
+CONTROLLER_URL=http://localhost:3001 #Externally accessible URL of the Controller
 PORT=3001
-AUTH_SECRET=changeme #Random String for AUTH
-NODE_PSK=changeme #Random String for Scheduler to join Controller
+AUTH_SECRET=changeme #Random string for authentication
+NODE_PSK=changeme #Random string for Scheduler to join Controller
 
 # SCHEDULER
 NODE_NAME=examplenode
@@ -124,17 +123,22 @@ ENABLE_CROSS_COMPILE=false
 AUTO_PULL_IMG=true
 ```
 
-## 2) Adjust envs
-Adjust the environment variables in the `.env` file and the volume paths in the `compose.yml` to your needs.
-You can read more about the envs on the [Components](/docs/Components/Iglu%20Builder) page.
+## 2) Configure Environment Variables
+Adjust the environment variables in the `.env` file and the volume paths in the `compose.yml` according to your requirements. Additional information about environment variables can be found on the [Components](/docs/Components/Iglu%20Builder) page.
+
 :::warning
-Please do not change the environemnts in the `compose.yml` unless you know what you do.
+Do not modify the environment variables in the `compose.yml` file unless you have a thorough understanding of the configuration.
 :::
 
-## 3) Start the containers
-Change in the directory with `cd iglu` and then start the containers with `compose up -d`
+## 3) Start the Containers
+Navigate to the directory using `cd iglu` and start the containers with the following command:
 
-You can check your results by executing:
+```bash
+docker compose up -d
+```
+
+Verify the deployment by executing:
+
 ```bash
 foo@bar:~$ docker ps
 
@@ -145,9 +149,5 @@ e894e57fe3ed  ghcr.io/iglu-sh/iglu-cache:latest       /bin/iglu-cache       24 m
 0a525e2f4ae2  ghcr.io/iglu-sh/iglu-controller:latest  /bin/iglu-control...  24 minutes ago  Up 24 minutes  0.0.0.0:3001->3001/tcp, 3000/tcp                iglu-controller-1
 5265714c9325  ghcr.io/iglu-sh/iglu-scheduler:latest   /bin/iglu-schedul...  24 minutes ago  Up 19 minutes  3008/tcp                                        iglu-scheduler-1
 ```
-If it looks like the output in the example you are good to go now! Your basic Iglu-Setup is running!
 
-
-
-
-
+If your output matches the example above, your basic Iglu setup is now operational.

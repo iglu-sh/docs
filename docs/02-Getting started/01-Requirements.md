@@ -1,27 +1,24 @@
----
-sidebar_position: 1
----
-
 ## Hardware
-### Minimal
+
+### Minimal Requirements
 - **Disk**: 50GB
 - **RAM**: 4GB
 - **CPU**: 2 Cores, ARM64 or AMD64 Architecture
 
-### Recomended
+### Recommended Requirements
 - **Disk**: 100GB
 - **RAM**: 8GB
 - **CPU**: 4 Cores, ARM64 or AMD64 Architecture
 
-## OS
-Any linux distribution that can run docker.
+## Operating System
+Any Linux distribution capable of running Docker.
 
 :::warning
 
-We only test for **NixOS** on **x86_64** and **arm64**!
+Testing is conducted exclusively on **NixOS** for **x86_64** and **arm64** architectures.
 
 :::
 
 ## Dependencies
-- [Installed Docker](https://docs.docker.com/engine/install/)
-- [Installed Docker Compose](https://docs.docker.com/compose/install/)
+- [Docker](https://docs.docker.com/engine/install/) (installed)
+- [Docker Compose](https://docs.docker.com/compose/install/) (installed)
